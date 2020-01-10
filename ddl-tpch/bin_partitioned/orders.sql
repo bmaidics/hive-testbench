@@ -12,7 +12,7 @@ create table orders (O_ORDERKEY BIGINT,
  O_SHIPPRIORITY INT,
  O_COMMENT STRING)
  partitioned by (O_ORDERDATE STRING)
-stored as ${FILE}
+stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only')
 ;
 
 ALTER TABLE orders SET TBLPROPERTIES('orc.bloom.filter.columns'='*','orc.compress'='ZLIB');

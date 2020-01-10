@@ -33,7 +33,7 @@ create table catalog_returns
 ,     cr_net_loss decimal(7,2)
 )
 partitioned by (cr_returned_date_sk bigint)
-stored as ${FILE};
+stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only');
 
 from ${SOURCE}.catalog_returns cr
 insert overwrite table catalog_returns partition(cr_returned_date_sk) 

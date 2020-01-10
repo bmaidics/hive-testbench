@@ -40,7 +40,7 @@ create table catalog_sales
 ,     cs_net_profit decimal(7,2)
 )
 partitioned by (cs_sold_date_sk bigint)
-stored as ${FILE};
+stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only');
 
 from ${SOURCE}.catalog_sales cs
 insert overwrite table catalog_sales partition (cs_sold_date_sk) 

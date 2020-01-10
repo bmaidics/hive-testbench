@@ -20,7 +20,7 @@ create table lineitem
  L_SHIPMODE STRING,
  L_COMMENT STRING)
  partitioned by (L_SHIPDATE STRING)
-stored as ${FILE}
+stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only')
 ;
 
 ALTER TABLE lineitem SET TBLPROPERTIES('orc.bloom.filter.columns'='*','orc.compress'='ZLIB');

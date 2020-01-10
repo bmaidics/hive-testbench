@@ -87,11 +87,11 @@ create table if not exists orders (O_ORDERKEY BIGINT,
 STORED AS ORC TBLPROPERTIES ("orc.compress"="SNAPPY")
 ;
 
-insert overwrite table nation select * from ${SOURCE}.nation;
-insert overwrite table region select * from ${SOURCE}.region;
-insert overwrite table part select * from ${SOURCE}.part;
-insert overwrite table supplier select * from ${SOURCE}.supplier;
-insert overwrite table partsupp select * from ${SOURCE}.partsupp;
-insert overwrite table customer select * from ${SOURCE}.customer;
-insert overwrite table lineitem select * from ${SOURCE}.lineitem;
-insert overwrite table orders select * from ${SOURCE}.orders;
+insert into table nation select * from ${SOURCE}.nation;
+insert into table region select * from ${SOURCE}.region;
+insert into table part select * from ${SOURCE}.part;
+insert into table supplier select * from ${SOURCE}.supplier;
+insert into table partsupp select * from ${SOURCE}.partsupp;
+insert into table customer select * from ${SOURCE}.customer;
+insert into table lineitem select * from ${SOURCE}.lineitem;
+insert into table orders select * from ${SOURCE}.orders;

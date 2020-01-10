@@ -33,7 +33,7 @@ partitioned by (wr_returned_date_sk       bigint)
 stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only');
 
 from ${SOURCE}.web_returns wr
-insert overwrite table web_returns partition (wr_returned_date_sk)
+insert into table web_returns partition (wr_returned_date_sk)
 select
         wr.wr_returned_time_sk,
         wr.wr_item_sk,
@@ -60,7 +60,7 @@ select
         wr.wr_net_loss,
 		wr.wr_returned_date_sk
         where wr.wr_returned_date_sk is not null
-insert overwrite table web_returns partition (wr_returned_date_sk)
+insert into table web_returns partition (wr_returned_date_sk)
 select
         wr.wr_returned_time_sk,
         wr.wr_item_sk,

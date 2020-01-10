@@ -36,7 +36,7 @@ partitioned by (cr_returned_date_sk bigint)
 stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only');
 
 from ${SOURCE}.catalog_returns cr
-insert overwrite table catalog_returns partition(cr_returned_date_sk) 
+insert into table catalog_returns partition(cr_returned_date_sk) 
 select
         cr.cr_returned_time_sk,
         cr.cr_item_sk,
@@ -66,7 +66,7 @@ select
         cr.cr_net_loss,
         cr.cr_returned_date_sk
       where cr.cr_returned_date_sk is not null
-insert overwrite table catalog_returns partition (cr_returned_date_sk) 
+insert into table catalog_returns partition (cr_returned_date_sk) 
 select
         cr.cr_returned_time_sk,
         cr.cr_item_sk,

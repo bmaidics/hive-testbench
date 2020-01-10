@@ -17,7 +17,7 @@ stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_prope
 
 ALTER TABLE orders SET TBLPROPERTIES('orc.bloom.filter.columns'='*','orc.compress'='ZLIB');
 
-INSERT OVERWRITE TABLE orders partition(O_ORDERDATE)
+insert into TABLE orders partition(O_ORDERDATE)
 select 
 O_ORDERKEY ,
  O_CUSTKEY ,

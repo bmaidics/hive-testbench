@@ -25,7 +25,7 @@ stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_prope
 
 ALTER TABLE lineitem SET TBLPROPERTIES('orc.bloom.filter.columns'='*','orc.compress'='ZLIB');
 
-INSERT OVERWRITE TABLE lineitem Partition(L_SHIPDATE)
+insert into TABLE lineitem Partition(L_SHIPDATE)
 select 
 L_ORDERKEY ,
  L_PARTKEY ,

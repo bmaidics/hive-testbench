@@ -43,7 +43,7 @@ partitioned by (ws_sold_date_sk           bigint)
 stored as ${FILE}  TBLPROPERTIES ('transactional'='true',   'transactional_properties'='insert_only');
 
 from ${SOURCE}.web_sales ws
-insert overwrite table web_sales partition (ws_sold_date_sk) 
+insert into table web_sales partition (ws_sold_date_sk) 
 select
         ws.ws_sold_time_sk,
         ws.ws_ship_date_sk,
@@ -80,7 +80,7 @@ select
         ws.ws_net_profit,
         ws.ws_sold_date_sk
         where ws.ws_sold_date_sk is not null
-insert overwrite table web_sales partition (ws_sold_date_sk) 
+insert into table web_sales partition (ws_sold_date_sk) 
 select
         ws.ws_sold_time_sk,
         ws.ws_ship_date_sk,
